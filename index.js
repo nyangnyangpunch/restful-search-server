@@ -9,7 +9,9 @@ app.get(config.endPoint, async (req, res) => {
   const keyword = req.query.query
   try {
     logger.info(`Search keyword: ${keyword}`)
-    res.json(await search(keyword))
+    res.setHeader('content-type', ['text/json', 'charset=utf-8'])
+    res.write(await search(keyword))
+    res.end()
   } catch (e) {
     logger.error(e)
     res.json(null)
