@@ -8,6 +8,16 @@ const app = express()
 // Uncaught exception handler 
 process.on('uncaughtException', logger.error)
 
+// Set allow CORS
+if (config.cors) {
+  logger.info('CONFIG: CORS allowed')
+  app.use((_, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With')
+    next()
+  })
+}
+
 // API Route and handler
 app.get(config.endPoint, async (req, res) => {
   const keyword = req.query.query
