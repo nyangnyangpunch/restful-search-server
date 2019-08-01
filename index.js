@@ -5,6 +5,8 @@ const search = require('./src/search')
 const express = require('express')
 const app = express()
 
+process.on('uncaughtException', logger.error)
+
 app.get(config.endPoint, async (req, res) => {
   const keyword = req.query.query
   try {
