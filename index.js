@@ -11,21 +11,20 @@ process.on('uncaughtException', logger.error)
 // API Route and handler
 app.get(config.endPoint, async (req, res) => {
   const keyword = req.query.query
+  res.setHeader('content-type', ['application/json', 'charset=utf-8'])
   try {
     // Keyword search
     logger.info(`Search keyword: ${keyword}`)
 
     // Set response header
-    res.setHeader('content-type', ['text/json', 'charset=utf-8'])
     res.write(await search(keyword))
     res.end()
   } catch (e) {
     // Error
     logger.error(e)
-    res.setHeader('content-type', ['text/json', 'charset=utf-8'])
     res.write(null)
-    res.end()
   }
+  res.end()
 })
 
 // LISTEN (Server start)
