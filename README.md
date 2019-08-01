@@ -29,3 +29,12 @@ node index
 ## Test
 
 `http://localhost:port/YOUR_API_ENDPOINT?query=KEYWORD`
+
+- CURL Request example
+
+```bash
+curl -X GET \
+     -H "Content-type: application/json" \
+     -d "{'query': 'cat'}" \
+     http://localhost:8088/search
+```
