@@ -27,6 +27,7 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 source ~/.bashrc
 
 nvm --version
+nvm use 8
 ```
 
 ## 5. 서버 코드 다운로드
